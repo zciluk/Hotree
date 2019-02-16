@@ -27,10 +27,10 @@
         width: 60%;
     }
     &__validator { 
-        
-        height: 3rem;
+        max-width: 21%;
+        min-height: 3rem;
         background-color: $color-validation-red;
-        padding: .3rem 1.2rem;
+        padding: .4rem 1.2rem;
         margin-left: 1rem;
         color: $color-white;
         font-size: 1.3rem;
@@ -51,6 +51,9 @@
               transform: translateX(-5px);
             }
           }
+        @include respond(w900) { 
+            max-width: 35%; 
+        }  
     }
     
 }

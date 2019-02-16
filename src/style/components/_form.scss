@@ -33,3 +33,45 @@
         border: 1px solid $color-validation-red;
     }
 }
+
+.form-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+}
+.description-item {
+    color: $color-grey;
+    font-style: italic;
+    &__left {
+        margin-left: auto;
+    }
+    &__red {
+       color: $color-validation-red
+    }
+}
+.form-select {
+    overflow: hidden;
+    width: 100%;
+    font-size: 1.3rem;
+    padding: .8rem 1rem;
+    border-radius: 2px;
+    border: 1px solid $color-validation-blue;
+    display: block;
+    transition: all .3s;   
+    height: 4rem;
+    background: $color-white;
+    color: $color-grey;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('../img/arrow_down.png') 99% / contain no-repeat $color-white;
+    select::-ms-expand { 
+        display: none; /* remove default arrow on ie10 and ie11 */
+    }
+    &__clicked {
+        color: #000;
+    }
+}
+
