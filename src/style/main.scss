@@ -1,6 +1,14 @@
+
+@import "abstracts/_variables.scss";
+@import "base/_mixins.scss";
 @import "base/_base.scss";
 @import "base/_typo.scss";
 
-@import "abstracts/_variables.scss";
+
+
 
 @import "components/_header.scss";
+@import "components/_box-container.scss";
+@import "components/_form-container.scss";
+@import "components/_field-container.scss";
+@import "components/_form.scss";

@@ -12,8 +12,10 @@
         background-color: $color-background-header-2;
         display: flex;
         align-items: center;
+        
+        
         &--text {
-            padding: 15rem;
+            margin-left:15%; 
             font-size: 3.5rem;
             color: $color-white;
             font-weight: 200;

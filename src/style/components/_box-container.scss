@@ -1,0 +1,26 @@
+.box-container {
+    width: 80%;
+    background-color: $color-white;
+    border-radius: 5px;
+    margin: 2rem;
+    padding: 2rem 4rem;
+    box-shadow: $border-shadow;
+        &__title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: $font-blue;
+        }
+        &__vertical {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #E2E2E3;
+            margin: .5rem 0 2rem;
+            padding: 0;
+        }
+        @include respond(w900) { 
+            width: 100%; 
+            margin: 1rem 0;
+            padding: 2rem;
+        }
+}

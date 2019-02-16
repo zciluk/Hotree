@@ -1,0 +1,35 @@
+.form-input {
+    width: 100%;
+    font-size: 1.3rem;
+    color: inherit;
+    padding: .8rem 1rem;
+    border-radius: 2px;
+    border: 1px solid $color-validation-blue;
+    display: block;
+    transition: all .3s;    
+    &::-webkit-input-placeholder {
+        color: $color-grey;
+    }
+    &__validated {
+        border: 1px solid $color-validation-red;
+    }
+}
+
+.form-textarea {
+    width: 100%;
+    height: 11rem;
+    font-size: 1.3rem;
+    color: inherit;
+    padding: .8rem 1rem;
+    border-radius: 2px;
+    border: 1px solid $color-validation-blue;
+    display: block;
+    transition: all .3s;  
+    resize: none;  
+    &::-webkit-input-placeholder {
+        color: $color-grey;
+    }
+    &__validated {
+        border: 1px solid $color-validation-red;
+    }
+}

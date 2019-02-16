@@ -1,0 +1,58 @@
+.field-container {
+    display: flex;
+    flex-direction: row;
+    justify-items: start;
+    align-items: flex-start;
+    flex-wrap:wrap;
+    margin: 1rem 0;
+    &__label {
+        width: 15%;
+        font-size: 1.3rem;
+        margin-top: .5rem;
+        text-transform: uppercase;
+        color: $color-validation-blue;
+        @include respond(w900) { 
+            width: 100%;
+        }
+        &--red {
+            color: $color-validation-red;
+        }
+        &--required {
+            color: $color-validation-red;
+            margin-left: .4rem;
+        }
+        
+    }
+    &__field{
+        width: 60%;
+    }
+    &__validator { 
+        
+        height: 3rem;
+        background-color: $color-validation-red;
+        padding: .3rem 1.2rem;
+        margin-left: 1rem;
+        color: $color-white;
+        font-size: 1.3rem;
+        font-weight: 300;
+        clip-path: polygon(4% 30%, 4% 10%, 100% 10%, 100% 90%, 4% 90%, 4% 70%, 0 50%);
+        border-radius: 3px;
+        animation-iteration-count: infinite;
+        animation-name: bounce;  
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+          @keyframes bounce {
+            0%, 100% {
+              transform: translateX(0);
+            }
+            50% {
+              transform: translateX(-5px);
+            }
+          }
+    }
+    
+}
+
+

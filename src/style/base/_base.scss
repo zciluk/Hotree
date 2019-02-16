@@ -8,9 +8,13 @@
 
 html {
     font-size: 62.5%;
+    @include respond(w900) { // width < 900?
+        font-size: 50%; //1 rem = 8px, 8/16 = 50%
+    }
 }
 
 body {
     box-sizing: border-box;
     padding: 0rem;
+    background-color: $color-background;
 }
