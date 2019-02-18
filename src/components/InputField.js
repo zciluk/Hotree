@@ -20,7 +20,7 @@ InputField.propTypes = {
     ]).isRequired,
     placeholder: PropTypes.string,
     handler: PropTypes.func.isRequired,
-    inputType: PropTypes.oneOf(['text', 'number']).isRequired
+    inputType: PropTypes.oneOf(['text', 'number', 'email']).isRequired
 }
 
 export default InputField;

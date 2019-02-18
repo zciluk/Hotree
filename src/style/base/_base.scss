@@ -15,7 +15,7 @@ html {
         font-size: 50%; //1 rem = 8px, 8/16 = 50%
     }
     @include respond(w1800) {
-        font-size: 75%; //1rem = 12, 12/16
+        font-size: 75%; //1rem = 12px, 12/16
     }
 }
 
