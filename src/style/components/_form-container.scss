@@ -3,4 +3,11 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s;
+    &__idontfeelsogood {
+        opacity: 0;
+        visibility: none;
+    }
 }

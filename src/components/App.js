@@ -8,7 +8,6 @@ class App extends Component {
     return (
       <div className="container">
             <Header/>
-            { /* here will be some success tenary operations */ }
             <FormContainer/>
       </div>
     );

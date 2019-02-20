@@ -196,12 +196,13 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    
     &__datepicker{
         width: 30%;
         @include respond(w900) { 
             width: 100%;
         }
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         color: inherit;
         padding: .8rem 1rem;
         border-radius: 2px;
@@ -225,12 +226,13 @@
         margin-left: 1rem;
         width: 15%;
         @include respond(w900) { 
+            margin-top: .5rem;
             width: 25%;
         }
         @include respond(w600) { 
             width: 45%;
         }
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         color: inherit;
         padding: .8rem 1rem;
         border-radius: 2px;
@@ -244,6 +246,32 @@
             border: 1px solid $color-validation-red;
         }
        
+    }
+
+}
+.form-button {
+    &,
+    &:link,
+    &:visited {
+    font-size: 1.3rem;
+    width: 15rem;
+    border: 1.5rem solid $color-button;
+    border-radius: .2rem;
+    margin: 2rem;
+    height: 5rem;
+    color: $color-white;
+    background-color: $color-button;
+    text-transform: uppercase;
+    transition: all .3s,border .7s, background-color .6s;
+    cursor: pointer;
+    }
+    &:hover {
+        transform: translateY(-.4rem);
+        font-size: 1.4rem;
+        background-color: $color-white;
+        color: $color-background-header-1;
+        border: .5rem solid $color-button;
+        box-shadow: 0 .5rem 1rem rgba($color-grey-dark, .55);
     }
 
 }
