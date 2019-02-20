@@ -8,6 +8,7 @@ const InputField = props => (
     value={props.value}
     onChange={props.handler}
     placeholder={props.placeholder}
+    id={props.id}
   />
 );
 
@@ -16,7 +17,8 @@ InputField.propTypes = {
   placeholder: PropTypes.string,
   handler: PropTypes.func.isRequired,
   inputType: PropTypes.oneOf(["text", "number", "email"]).isRequired,
-  error: PropTypes.bool
+  error: PropTypes.bool,
+  id: PropTypes.string
 };
 
 export default InputField;

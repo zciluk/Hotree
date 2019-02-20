@@ -9,6 +9,7 @@ const SmallInput = props => (
       value={props.value}
       onChange={props.handler}
       placeholder={props.placeholder}
+      id={props.id}
     />
     <span className="form-smallinput__label">{props.text}</span>
   </div>
@@ -19,7 +20,8 @@ SmallInput.propTypes = {
   placeholder: PropTypes.string,
   text: PropTypes.string,
   handler: PropTypes.func.isRequired,
-  inputType: PropTypes.oneOf(["text", "number"]).isRequired
+  inputType: PropTypes.oneOf(["text", "number"]).isRequired,
+  id: PropTypes.string
 };
 
 export default SmallInput;

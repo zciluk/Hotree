@@ -7,6 +7,7 @@ const CoordinatorField = props => (
       className={"form-select form-select__clicked"}
       value={props.value}
       onChange={props.handler}
+      id="coordinator"
     >
       <option value="" disabled>
         Me

@@ -15,7 +15,7 @@ import ResponseBox from "./ResponseBox";
 // global variables
 const jsonCategory = require("../mocks/categories.json");
 const jsonCoordinators = require("../mocks/employes.json");
-const loggedUser = 3; // ID of logged user 
+const loggedUser = 3; // ID of logged user
 const descLimit = 140; // global description limit
 
 class FormContainer extends Component {
@@ -78,7 +78,7 @@ class FormContainer extends Component {
           ? parseInt(this.state.duration) * 3600
           : 0, // in seconds
         coordinator: {
-          email: this.state.coordinators[this.state.coordinatorSelected].email,
+          email: this.state.email,   // assumed that this Email must be returned instead of coordinators[this.state.coordinatorSelected].email 
           id: this.state.coordinatorSelected
         }
       });
@@ -228,6 +228,7 @@ class FormContainer extends Component {
               error={this.state.titleError}
             >
               <InputField
+                id="title"
                 inputType="text"
                 placeholder="Make it short and clear"
                 value={this.state.title}
@@ -243,6 +244,7 @@ class FormContainer extends Component {
               error={this.state.descriptionError}
             >
               <TextField
+                id="description"
                 inputType="text"
                 placeholder="Write about your event, be creative"
                 value={this.state.description}
@@ -254,6 +256,7 @@ class FormContainer extends Component {
 
             <FieldContainer title="Category">
               <SelectField
+                id="select"
                 placeholder="Select category"
                 description="Describes topic and people who should be interested in this event"
                 data={this.state.categories}
@@ -279,6 +282,7 @@ class FormContainer extends Component {
             </FieldContainer>
             <FieldContainer title="Reward">
               <SmallInput
+                id="reward"
                 placeholder="Number"
                 inputType="number"
                 handler={this.handleRewardChange}
@@ -291,6 +295,7 @@ class FormContainer extends Component {
           <BoxContainer title="Coordinator">
             <FieldContainer title="Responsible" required>
               <CoordinatorField
+                id="coordinator"
                 placeholder="Select category"
                 description=""
                 data={this.state.coordinators}
@@ -305,6 +310,7 @@ class FormContainer extends Component {
               error={this.state.emailError}
             >
               <InputField
+                id="email"
                 inputType="email"
                 placeholder="Email"
                 value={this.state.email}
@@ -321,6 +327,7 @@ class FormContainer extends Component {
               error={this.state.dateError}
             >
               <DateField
+                id="date"
                 handlerDate={this.handleDateChange}
                 handlerTime={this.handleTimeChange}
                 handlerPastMidday={this.handlePastMidday}
@@ -332,6 +339,7 @@ class FormContainer extends Component {
             </FieldContainer>
             <FieldContainer title="Duration">
               <SmallInput
+                id="duration"
                 placeholder="Number"
                 handler={this.handleDurationChange}
                 inputType="number"
@@ -340,7 +348,7 @@ class FormContainer extends Component {
               />
             </FieldContainer>
           </BoxContainer>
-          <Button name="Publish event" handler={this.onFormSubmit} />
+          <Button id="submit" name="Publish event" handler={this.onFormSubmit} />
         </div>
       </div>
     );

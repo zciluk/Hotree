@@ -14,6 +14,7 @@ const DateField = props => (
       value={props.valueDate}
       onChange={props.handlerDate}
       placeholder="dd/mm/yyyy"
+      id="date"
     />
     <span className={"form-date__label"}> at </span>
     <input
@@ -28,6 +29,7 @@ const DateField = props => (
       value={props.valueTime}
       onChange={props.handlerTime}
       placeholder="--:--"
+      id="time"
     />
     <div className="form-payment__radio-group">
       <input

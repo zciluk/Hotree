@@ -7,6 +7,7 @@ const SelectField = props => (
       className={"form-select " + (props.clicked && "form-select__clicked")}
       value={props.value}
       onChange={props.handler}
+      id={props.id}
     >
       <option value="" disabled>
         {props.placeholder}
@@ -29,7 +30,8 @@ SelectField.propTypes = {
   handler: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
   description: PropTypes.string,
-  clicked: PropTypes.bool
+  clicked: PropTypes.bool,
+  id: PropTypes.string
 };
 
 export default SelectField;

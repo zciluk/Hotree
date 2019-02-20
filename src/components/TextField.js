@@ -9,6 +9,7 @@ const TextField = props => (
       value={props.value}
       onChange={props.handler}
       placeholder={props.placeholder}
+      id={props.id}
     />
     <label className="description-item">
       Max length: {props.limit} characters{" "}
@@ -30,7 +31,8 @@ TextField.propTypes = {
   handler: PropTypes.func.isRequired,
   inputType: PropTypes.oneOf(["text", "number"]).isRequired,
   limit: PropTypes.number.isRequired,
-  error: PropTypes.bool
+  error: PropTypes.bool,
+  id: PropTypes.string
 };
 
 export default TextField;
