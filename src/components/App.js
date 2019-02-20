@@ -1,17 +1,17 @@
-import React, { Component } from 'react';  
-import '../style/main.scss';
-import FormContainer from './FormContainer.js';
-import Header from './Header';
+import React, { Component } from "react";
+import "../style/main.scss";
+import FormContainer from "./FormContainer.js";
+import Header from "./Header";
 
-class App extends Component {  
+class App extends Component {
   render() {
     return (
       <div className="container">
-            <Header/>
-            <FormContainer/>
+        <Header />
+        <FormContainer />
       </div>
     );
   }
 }
 
-export default App;  
+export default App;

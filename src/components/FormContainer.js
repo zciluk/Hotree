@@ -15,7 +15,7 @@ import ResponseBox from "./ResponseBox";
 // global variables
 const jsonCategory = require("../mocks/categories.json");
 const jsonCoordinators = require("../mocks/employes.json");
-const loggedUser = 3; // ID of logged user global
+const loggedUser = 3; // ID of logged user 
 const descLimit = 140; // global description limit
 
 class FormContainer extends Component {
@@ -57,23 +57,26 @@ class FormContainer extends Component {
 
   onFormSubmit = () => {
     // submit
-    // onChange() - change all req fields
-    //this.handleTitleChange();
-    this.validate();
+    this.validate(); //validate all required fields
     if (this.validateErrors()) {
-      // some message
+      //error-check
+      // some eventual error message
     } else {
       this.setState({ submitSuccess: true });
-
+      // console log - goal of the task
       console.log({
         title: this.state.title,
         description: this.state.description,
-        category_id: this.state.categorySelected ? parseInt(this.state.categorySelected) : "",
+        category_id: this.state.categorySelected
+          ? parseInt(this.state.categorySelected)
+          : "",
         paid_event: this.state.paidEvent,
         event_fee: this.state.paidEvent ? parseInt(this.state.fee) : 0,
         reward: this.state.reward ? parseInt(this.state.reward) : 0,
-        date: this.state.date+"T"+this.to24Hours(this.state.time), // YYYY-MM-DDTHH:mm (example: 2018-01-19T15:15) 
-        duration: this.state.duration ? parseInt(this.state.duration) * 3600 : 0, // in seconds
+        date: this.state.date + "T" + this.to24Hours(this.state.time), // YYYY-MM-DDTHH:mm (example: 2018-01-19T15:15)
+        duration: this.state.duration
+          ? parseInt(this.state.duration) * 3600
+          : 0, // in seconds
         coordinator: {
           email: this.state.coordinators[this.state.coordinatorSelected].email,
           id: this.state.coordinatorSelected
@@ -83,17 +86,7 @@ class FormContainer extends Component {
       window.scrollTo(0, 0);
     }
   };
-  to24Hours = (val) => {
-        if(this.state.pastMidday) {
-            val = val.split(":");
-            val[0] = parseInt(val[0]) + 12;
-            return val.join(":");
-                
-        } else {
-            return val;
-        }
-        
-  }
+
   validateErrors = () => {
     // check fields
     return (
@@ -101,10 +94,11 @@ class FormContainer extends Component {
       this.validate("empty", this.state.description) ||
       this.validate("paid_empty", this.state.fee) ||
       this.validate("email", this.state.email) ||
-      (this.validate("empty", this.state.date) || this.validate("empty", this.state.time))
+      (this.validate("empty", this.state.date) ||
+        this.validate("empty", this.state.time))
     );
-    // check if any of errors are present
   };
+  // all field validators, if no check type is written, performs reccurence to check all required fields
   validate(check, value) {
     switch (check) {
       case "empty":
@@ -127,11 +121,15 @@ class FormContainer extends Component {
           feeError: this.validate("paid_empty", this.state.fee)
         });
         this.setState({ emailError: this.validate("email", this.state.email) });
-        this.setState({ dateError: (this.validate("empty", this.state.date) || this.validate("empty", this.state.time))});
+        this.setState({
+          dateError:
+            this.validate("empty", this.state.date) ||
+            this.validate("empty", this.state.time)
+        });
     }
   }
 
-  // Handlers for fields state
+  // Handlers for fields state values
   handleTitleChange = e => {
     this.setState({ titleError: this.validate("empty", e.target.value) }); //check if empty
     this.setState({ title: e.target.value });
@@ -143,7 +141,7 @@ class FormContainer extends Component {
     });
   };
   handleCategoryChange = e => {
-    if (!this.state.categoryClicked) this.setState({ categoryClicked: true });
+    if (!this.state.categoryClicked) this.setState({ categoryClicked: true }); // for placeholder color
     this.setState({ categorySelected: e.target.value });
   };
   handlePaymentChange = e => {
@@ -175,7 +173,7 @@ class FormContainer extends Component {
   };
   handleDateChange = e => {
     this.setState({ dateError: this.validate("empty", e.target.value) });
-    //check if date is not before current date
+    //check if date is not before current date (double check - should be checked by HTML5 input)
     let dateVal = e.target.value;
     let today = moment().format(moment.HTML5_FMT.DATE);
     if (dateVal < today && dateVal !== "") dateVal = today;
@@ -185,7 +183,7 @@ class FormContainer extends Component {
     this.setState({ dateError: this.validate("empty", e.target.value) });
     // ensure user cannot enter 24h time
     let timeVal = e.target.value;
-    if (timeVal > "12:00" && timeVal !== "") timeVal= "12:00";
+    if (timeVal > "12:00" && timeVal !== "") timeVal = "12:00";
     this.setState({ time: timeVal });
   };
   handlePastMidday = e => {
@@ -195,9 +193,19 @@ class FormContainer extends Component {
       this.setState({ pastMidday: true });
     }
   };
+
   //helper functions
   numbersOnly = input => {
     return input.replace(/\D/g, "");
+  };
+  to24Hours = val => {
+    if (this.state.pastMidday) {
+      val = val.split(":");
+      val[0] = parseInt(val[0]) + 12;
+      return val.join(":");
+    } else {
+      return val;
+    }
   };
 
   render() {
@@ -209,7 +217,7 @@ class FormContainer extends Component {
         <div
           className={
             "form-container " +
-            (this.state.submitSuccess && "form-container__idontfeelsogood")
+            (this.state.submitSuccess && "form-container__idontfeelsogood") // :)
           }
         >
           <BoxContainer title="About">
@@ -220,7 +228,6 @@ class FormContainer extends Component {
               error={this.state.titleError}
             >
               <InputField
-                name="Title"
                 inputType="text"
                 placeholder="Make it short and clear"
                 value={this.state.title}
@@ -236,7 +243,6 @@ class FormContainer extends Component {
               error={this.state.descriptionError}
             >
               <TextField
-                name="Description"
                 inputType="text"
                 placeholder="Write about your event, be creative"
                 value={this.state.description}
@@ -248,7 +254,6 @@ class FormContainer extends Component {
 
             <FieldContainer title="Category">
               <SelectField
-                name="Category"
                 placeholder="Select category"
                 description="Describes topic and people who should be interested in this event"
                 data={this.state.categories}
@@ -264,7 +269,6 @@ class FormContainer extends Component {
               error={this.state.feeError}
             >
               <PaymentField
-                name="Payment"
                 placeholder="Fee"
                 handler={this.handlePaymentChange}
                 handlerFee={this.handleFeeChange}
@@ -275,8 +279,8 @@ class FormContainer extends Component {
             </FieldContainer>
             <FieldContainer title="Reward">
               <SmallInput
-                name="Reward"
                 placeholder="Number"
+                inputType="number"
                 handler={this.handleRewardChange}
                 text="rewards points for attendance"
                 value={this.state.reward}
@@ -287,7 +291,6 @@ class FormContainer extends Component {
           <BoxContainer title="Coordinator">
             <FieldContainer title="Responsible" required>
               <CoordinatorField
-                name="Responsible"
                 placeholder="Select category"
                 description=""
                 data={this.state.coordinators}
@@ -302,7 +305,6 @@ class FormContainer extends Component {
               error={this.state.emailError}
             >
               <InputField
-                name="Email"
                 inputType="email"
                 placeholder="Email"
                 value={this.state.email}
@@ -319,7 +321,6 @@ class FormContainer extends Component {
               error={this.state.dateError}
             >
               <DateField
-                name="Date"
                 handlerDate={this.handleDateChange}
                 handlerTime={this.handleTimeChange}
                 handlerPastMidday={this.handlePastMidday}
@@ -331,9 +332,9 @@ class FormContainer extends Component {
             </FieldContainer>
             <FieldContainer title="Duration">
               <SmallInput
-                name="Reward"
                 placeholder="Number"
                 handler={this.handleDurationChange}
+                inputType="number"
                 text="hours"
                 value={this.state.duration}
               />
