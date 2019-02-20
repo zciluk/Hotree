@@ -35,6 +35,8 @@ Test can be found in /components/__test__ directory - there are some simple test
 ```sh
 $ npm run build
 ```
+# Additional info
+Some components are designed to be highly reusable - like InputField, SmallInput, Button or TextField. Others are specific to the project - like PaymentField or DateField, so there are less props available for customisation. 
 
 # Browsers support
 Webapp was tested on some most popular browsers:
