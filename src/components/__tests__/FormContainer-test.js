@@ -9,6 +9,7 @@ global.console = {
   }
 delete window.scrollTo
 window.scrollTo = jest.fn() ;// mocking empty function, because firing scrollTo in code leads to JSDom errors
+Date.now = jest.fn(() => 1709915676000); //some date in 2024
   // test data
 const passingTestData = {
     category_id: 3,
@@ -21,20 +22,18 @@ const passingTestData = {
     reward: 2,
     title: "Test title",
 }
-test('should display errors when Submit is pressed and none of the data is filled', async () => {
+test('should display errors when Submit is pressed and none of the data is filled', () => {
     const component = renderer.create(
         <FormContainer/>
     );
-    let tree = component.toJSON();
-    
-    component.root.findByProps({ id: "submit" }).props.handler();
-    await(5000); // await till state is updated
+    let tree = component.toJSON(); 
+    component.root.findByProps({ id: "submit" }).props.handler();   
     tree = component.toJSON(); ;
    expect(tree).toMatchSnapshot();     // validation messages are present in snapshot
         
    
 });
-test('should Submit form when all fields are properly filled', async () => {
+test('should Submit form when all fields are properly filled', () => {
     const component = renderer.create(
         <FormContainer/>
     );
@@ -54,7 +53,6 @@ test('should Submit form when all fields are properly filled', async () => {
     tree = component.toJSON();
     expect(tree).toMatchSnapshot();
     component.root.findByProps({ id: "submit" }).props.handler();
-    await(6000); // await till state is updated
     tree = component.toJSON(); 
    expect(tree).toMatchSnapshot(); 
    expect(global.console.log).toHaveBeenCalledWith(passingTestData); // check whether console.log have the same data as in passingTestData 

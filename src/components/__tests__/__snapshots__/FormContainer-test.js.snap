@@ -464,7 +464,7 @@ exports[`should Submit form when all fields are properly filled 1`] = `
             <input
               className="form-date__datepicker false"
               id="date"
-              min="2019-02-20"
+              min="2024-03-08"
               onChange={[Function]}
               placeholder="dd/mm/yyyy"
               type="date"
@@ -1058,7 +1058,7 @@ exports[`should Submit form when all fields are properly filled 2`] = `
             <input
               className="form-date__datepicker false"
               id="date"
-              min="2019-02-20"
+              min="2024-03-08"
               onChange={[Function]}
               placeholder="dd/mm/yyyy"
               type="date"
@@ -1635,7 +1635,7 @@ exports[`should display errors when Submit is pressed and none of the data is fi
             <input
               className="form-date__datepicker form-date__datepicker--validated"
               id="date"
-              min="2019-02-20"
+              min="2024-03-08"
               onChange={[Function]}
               placeholder="dd/mm/yyyy"
               type="date"

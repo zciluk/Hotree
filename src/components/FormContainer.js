@@ -28,7 +28,7 @@ class FormContainer extends Component {
       description: "",
       descriptionError: false,
       descriptionLimit: descLimit,
-      categories: [],
+      categories: jsonCategory,
       categorySelected: "",
       categoryClicked: false, //for coloring the options placeholder in Select, its quite challenging in CSS
       paidEvent: false,
@@ -38,21 +38,13 @@ class FormContainer extends Component {
       reward: "",
       email: "",
       emailError: false,
-      coordinators: [],
+      coordinators: jsonCoordinators,
       coordinatorSelected: loggedUser,
       dateError: false,
       date: "",
       time: "",
       pastMidday: false
     };
-  }
-
-  componentDidMount() {
-    // parse json mocks into state
-    this.setState({ categories: JSON.parse(JSON.stringify(jsonCategory)) });
-    this.setState({
-      coordinators: JSON.parse(JSON.stringify(jsonCoordinators))
-    });
   }
 
   onFormSubmit = () => {
@@ -62,7 +54,6 @@ class FormContainer extends Component {
       //error-check
       // some eventual error message
     } else {
-      this.setState({ submitSuccess: true });
       // console log - goal of the task
       console.log({
         title: this.state.title,
@@ -113,15 +104,11 @@ class FormContainer extends Component {
         return !regex.test(value) && value !== "" ? true : false;
       }
       default:
-        this.setState({ titleError: this.validate("empty", this.state.title) });
         this.setState({
-          descriptionError: this.validate("empty", this.state.description)
-        });
-        this.setState({
-          feeError: this.validate("paid_empty", this.state.fee)
-        });
-        this.setState({ emailError: this.validate("email", this.state.email) });
-        this.setState({
+          titleError: this.validate("empty", this.state.title),
+          descriptionError: this.validate("empty", this.state.description),
+          feeError: this.validate("paid_empty", this.state.fee),
+          emailError: this.validate("email", this.state.email),
           dateError:
             this.validate("empty", this.state.date) ||
             this.validate("empty", this.state.time)
@@ -153,7 +140,7 @@ class FormContainer extends Component {
     }
   };
   handleFeeChange = e => {
-    let numValue = this.numbersOnly(e.target.value);
+    const numValue = this.numbersOnly(e.target.value);
     this.setState({ feeError: this.validate("paid_empty", numValue) }); //check if empty & paid
     this.setState({ fee: numValue });
   };
@@ -172,17 +159,17 @@ class FormContainer extends Component {
     this.setState({ coordinatorSelected: e.target.value });
   };
   handleDateChange = e => {
-    this.setState({ dateError: this.validate("empty", e.target.value) });
-    //check if date is not before current date (double check - should be checked by HTML5 input)
     let dateVal = e.target.value;
-    let today = moment().format(moment.HTML5_FMT.DATE);
+    this.setState({ dateError: this.validate("empty", dateVal) });
+    //check if date is not before current date (double check - should be checked by HTML5 input)
+    const today = moment().format(moment.HTML5_FMT.DATE);
     if (dateVal < today && dateVal !== "") dateVal = today;
     this.setState({ date: dateVal });
   };
   handleTimeChange = e => {
-    this.setState({ dateError: this.validate("empty", e.target.value) });
-    // ensure user cannot enter 24h time
     let timeVal = e.target.value;
+    this.setState({ dateError: this.validate("empty", timeVal) });
+    // ensure user cannot enter 24h time
     if (timeVal > "12:00" && timeVal !== "") timeVal = "12:00";
     this.setState({ time: timeVal });
   };

@@ -470,7 +470,7 @@ exports[`should render initial layout 1`] = `
               <input
                 className="form-date__datepicker false"
                 id="date"
-                min="2019-02-20"
+                min="2024-03-08"
                 onChange={[Function]}
                 placeholder="dd/mm/yyyy"
                 type="date"

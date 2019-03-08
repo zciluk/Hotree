@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function BoxContainer(props) {
+const BoxContainer = props => {
   return (
     <div className="box-container">
       <div className="box-container__title">{props.title}</div>

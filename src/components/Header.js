@@ -1,8 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Header extends Component {
-  render() {
-    return (
+const Header = props => (
       <header className="header">
         <div className="header__small-line" />
         <div className="header__big-box">
@@ -10,6 +8,5 @@ class Header extends Component {
         </div>
       </header>
     );
-  }
-}
+
 export default Header;
